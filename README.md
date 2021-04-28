@@ -118,7 +118,7 @@ then plots the results.
 ## Flutter app
 
 ### Setup
-First you have to import your images into the images directory. The structure of assets should be as follows:
+First you have to import your images into the images directory located in the assets folder which is at the root of the project. The structure of assets should be as follows:
 ```
 assets/
 |__ images/
