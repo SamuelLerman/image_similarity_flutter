@@ -97,7 +97,7 @@ The thres argument is the threshold you have chosen for the model.
 
 The `upload_image` method parse the arguments given in the request, call the `are_images_similar` in the `deepranking-model.py` file and returns the boolean in the following json format:
 ```json
-{"result": bool}
+{"result": Boolean}
 ```
 
 In the last line:
@@ -156,7 +156,7 @@ NB: The `Info.plist`, `AndroidManifest.xml` and `android/app/build.gradle` files
 
 Once you have imported all your images. You will need to configure the `upload` method located in the `runModelScreen.dart` file. If you are running the api on a local server, you should have the line:
 ```dart
-var uri = Uri.parse("http://YOUR_IP_ADDRESS_ON_THE_NETWORK:5000/?class=${widget.testImageName}&thres=${thres}");
+var uri = Uri.parse("http://YOUR_IP_ADDRESS:5000/?class=${widget.testImageName}&thres=${thres}");
 ```
 Notice that the class argument is widget.testImageName. Therefore, your reference images directory relative to this class must have the same name.
 
