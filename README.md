@@ -14,8 +14,11 @@ The implementation of the deep-ranking image similarity model is based on this [
 
 I used flutter framework on channel stable 2.0.5 and Xcode 12.4. As the deep-ranking model is quite complex, I didn't use the tflite flutter package to run ML models but created an API with python and flask which is accessed via the application.
 
-The respository is composed of three sections :
-- The flutter a
+This respository is composed of three sections :
+- The API directory which contains the files to launch the API on a server;
+- A directory where you can find functions to plot the accuracy of the model for different thresholds;
+- The flutter app directory.
+
 
 ## The API
 
@@ -88,8 +91,56 @@ The function ``` are_images_similar``` iterates over the reference images of the
 
 ### api.py
 
+The http request sent to the server msut hold the two following arguments: class and thres.
+**The class argument name must be the same as the reference images directory of the class you are trying to identify**.
+The thres argument is the threshold you have chosen for the model.
 
+The `upload_image` method parse the arguments given in the request, call the `are_images_similar` in the `deepranking-model.py` file and returns the boolean in the following json format:
+```json
+{"result": boolean}
+```
 
 
 ## Ploting the accuracy of the model
+
+- The function 
+```dart
+generate_accuracies(String positive_images_dir_path, String negative_images_dir_path, String ref_images_dir_path TensorflowModel model)
+```
+generates, for a range of thresholds to define in the function, the accuracies for positive image recognition and negative image recognition.
+- The function 
+```dart
+plot_accuracies(String positive_images_dir_path, String negative_images_dir_path, String ref_images_dir_path TensorflowModel model)
+```
+then plots the results.
+
+
+## Flutter app
+
+### Setup
+First you have to import your images into the images directory. The structure of assets should be as follows:
+```
+assets/
+|__ images/
+|   |__ref_images_1/
+|   |   |__ ref_image_1_1.png
+|   |   |__ ref_image_1_2.png
+|   |   |__ ref_image_1_3.png
+|   |   |__ ...
+|   |__ref_images_2/
+|   |   |__ ref_image_2_1.png
+|   |   |__ ref_image_2_2.png
+|   |   |__ ref_image_2_3.png
+|   |   |__ ...
+|   |__ ...
+```
+
+Then update your `pubspec.yaml` file as so: 
+```yaml
+- assets:
+  - images/ref_images_1/
+  - images/ref_images_2/
+  - ...
+```
+
 
