@@ -75,7 +75,7 @@ In order to access the server from a different device connected to the same wifi
 
 ### deepranking_model.py
 
-The file `deeprabking_model.py` contains the functions that define the deep-ranking model (see the [repository]() mentionned above) and two other functions :
+The file `deeprabking_model.py` contains the functions that define the deep-ranking model (see the [repository](https://github.com/akarshzingade/image-similarity-deep-ranking) mentionned above) and two other functions :
 ```dart
 num compare_images(String img1_path, String im2_path, TensorflowModel model)
 ```
