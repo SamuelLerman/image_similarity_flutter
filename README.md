@@ -13,6 +13,9 @@ The implementation of the deep-ranking image similarity model is based on this [
 
 I used flutter framework on channel stable 2.0.5 and Xcode 12.4. As the deep-ranking model is quite complex, I didn't use the tflite flutter package to run ML models but created an API with python and flask which is accessed via the application.
 
+The respository is composed of three sections :
+- The flutter a
+
 ## The API
 
 I used python and flask to create the API. It is located at this [folder](). 
@@ -42,6 +45,7 @@ python_backend/
 |__ api.py
 |__ deepranking.h5
 |__ requirements.txt
+|__ run_model.py
 |__ images/
 |   |__reference_images_1/
 |   |   |__ ref_img_1_1.jpg
@@ -58,12 +62,20 @@ python_backend/
 ```
 
 #### Last step
-To launch the Falsk server on http://localhost:5000, you then have to type in the terminal window:
+Type in the terminal window. the following command to lauchn the Flask server at the address http://localhost:5000 on your machine:
 ```
 python api.py
 ```
 
-In order to access the server from a different device connected to the same wifi, you will have to get the IP address of the computer you are running the api on. The server will be located at http://your_IP_address:5000
+In order to access the server from a different device connected to the same wifi, you will have to get the IP address of the computer you are running the api on. The server will be located at http://your_IP_address:5000.
+
+### deepranking_model.py
+
+The file deeprabking_model.py contains the methods that define the deep-ranking model and two other methods :
+- float compare_images(String img1_path, String im2_path, Model model)
+- boolean are_images_similar(String image_path, String ref_images_directory_path, Model model, float threshold)
+
+The method compare_images returns the distance between two images 
 
 
 
