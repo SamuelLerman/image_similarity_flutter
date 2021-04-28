@@ -10,7 +10,7 @@ As an example, let's say that we have three reference images of the Joconde shot
 - take a picture of the Joconde (with different contrasts, shot angles, lighting, etc) and assert that it is indeed the Joconde (these pictures will be called positive images in the rest of the README);
 - take a picture of another portrait painting and assert that it is not the Joconde (these pictures will be called negative images).
 
-The implementation of the deep-ranking image similarity model is based on this [repository](https://github.com/akarshzingade/image-similarity-deep-ranking). The weights can be found in this [repository](https://github.com/USCDataScience/Image-Similarity-Deep-Ranking) (the "deepranking.h5" file).
+The implementation of the deep-ranking image similarity model is based on this [repository](https://github.com/akarshzingade/image-similarity-deep-ranking). The weights can be found in this [repository](https://github.com/USCDataScience/Image-Similarity-Deep-Ranking) (the `deepranking.h5` file).
 
 I used flutter framework on channel stable 2.0.5 and Xcode 12.4. As the deep-ranking model is quite complex, I didn't use the tflite flutter package to run ML models but created an API with python and flask which can be accessed via the application.
 
