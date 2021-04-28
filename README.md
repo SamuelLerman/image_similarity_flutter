@@ -97,7 +97,7 @@ The thres argument is the threshold you have chosen for the model.
 
 The `upload_image` method parse the arguments given in the request, call the `are_images_similar` in the `deepranking-model.py` file and returns the boolean in the following json format:
 ```json
-{"result": boolean}
+{"result": bool}
 ```
 
 
