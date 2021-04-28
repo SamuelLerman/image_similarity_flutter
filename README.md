@@ -73,11 +73,11 @@ In order to access the server from a different device connected to the same wifi
 ### deepranking_model.py
 
 The file `deeprabking_model.py` contains the functions that define the deep-ranking model (see the [repository]() mentionned above) and two other functions :
-```c
-float compare_images(string img1_path, string im2_path, TensorflowModel model)
+```dart
+num compare_images(String img1_path, String im2_path, TensorflowModel model)
 ```
-```c
-bool are_images_similar(string image_path, string ref_images_directory_path, TensorflowModel model, float threshold)
+```dart
+Boolean are_images_similar(String image_path, String ref_images_directory_path, TensorflowModel model, num threshold)
 ```
 
 The function ```compare_images``` returns the distance between two images. 
