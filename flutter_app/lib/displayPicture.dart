@@ -89,12 +89,14 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                             onTap: () async {
                               File img = File(snapshot.data);
                               // resize image to send it more quickly (image input for the network is 224x224)
-                              // File resizedFile =
-                              //     await FlutterNativeImage.compressImage(
-                              //         img.path,
-                              //         quality: 100,
-                              //         targetWidth: 500,
-                              //         targetHeight: 500);
+                              File resizedFile =
+                                await FlutterNativeImage.compressImage(
+                                  img.path,
+                                  quality: 100,
+                                  targetWidth: 300,
+                                  targetHeight: 300
+                              );
+                              
                               // parse cropped and resized image when popping
                               Navigator.pop(context, img);
                             },
