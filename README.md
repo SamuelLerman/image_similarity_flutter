@@ -4,10 +4,11 @@ This project is the implementation of a deep-ranking based image similarity mode
 
 ## Introduction
 
-The aim is to be able to assert that an image taken by the user belong to the same class as some reference images. As an example, let's say that we have three reference images of the Joconde shot at different angles. We want to be able to:
+The aim is to be able to assert that an image taken by the user belong to the same class as some reference images. 
+As an example, let's say that we have three reference images of the Joconde shot at different angles (it is import to mention that we know we want to recognize this particular class). We want to be able to:
 
-- take a picture of the Joconde (with different contrasts, shot angles, lighting, etc) and assert that it is indeed the Joconde;
-- take a picture of another portrait painting and assert that it is not the Joconde.
+- take a picture of the Joconde (with different contrasts, shot angles, lighting, etc) and assert that it is indeed the Joconde (these pictures will be called positive images in the rest of the README);
+- take a picture of another portrait painting and assert that it is not the Joconde (these pictures will be called negative images).
 
 The implementation of the deep-ranking image similarity model is based on this [repository](https://github.com/akarshzingade/image-similarity-deep-ranking). The weights can be found in this [repository](https://github.com/USCDataScience/Image-Similarity-Deep-Ranking) (the "deepranking.h5" file).
 
@@ -71,11 +72,20 @@ In order to access the server from a different device connected to the same wifi
 
 ### deepranking_model.py
 
-The file deeprabking_model.py contains the methods that define the deep-ranking model and two other methods :
-- float compare_images(String img1_path, String im2_path, Model model)
-- boolean are_images_similar(String image_path, String ref_images_directory_path, Model model, float threshold)
+The file ```deeprabking_model.py``` contains the functions that define the deep-ranking model (see the [repository]() mentionned above) and two other functions :
+- ```float compare_images(String img1_path, String im2_path, Model model)```
+- ```boolean are_images_similar(String image_path, String ref_images_directory_path, Model model, float threshold)```
 
-The method compare_images returns the distance between two images 
+The function ```compare_images``` returns the distance between two images. 
+
+In order to assert that they are similar or not, we have to define a threshold. The threshold needs to be set in regard of the use of the app (either recognizing positive images very well or recognizing negative images very well). In order to determine the threshold that corresponds to your use, you can plot the accuracy of the model with the ```plot_accuracy_model.py``` file.
+
+The function ```are_images_similar``` iterates over the reference images of the class we selected and if it finds out that one of the distances between the image. to compare and the reference images is below the threshold, it returns True (the images are similar), else it returns False.
+
+### api.py
 
 
+
+
+## Ploting the accuracy of the model
 
