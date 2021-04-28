@@ -64,7 +64,7 @@ def plot_accuracies(thresholds, performances_pos, performances_neg, ref_images_f
     
 ### If you want to load the model, import the deepranking_model.py in python_backend dir or create another file ###  
     
-def generate_accuracies(ref_images_path, images_pos_path, images_neg_path, thres, model):
+def generate_accuracies(positive_images_dir_path, negative_images_dir_path, ref_images_dir_path, threshold, model):
   """
   Computes the accuracy of the model over positive images and negative images
   You must pass:
@@ -74,26 +74,26 @@ def generate_accuracies(ref_images_path, images_pos_path, images_neg_path, thres
   - a threshold value 
   - the tensorflow model
   """
-  images_test = os.listdir(images_test_path)
-  images_neg = os.listdir(images_neg_path)
-  ref_images = os.listdir(ref_images_path)
+  images_pos = os.listdir(positive_images_dir_path)
+  images_neg = os.listdir(negative_images_dir_path)
+  images_ref = os.listdir(ref_images_dir_path)
   S_pos = 0
-  for image in tqdm(images_test, position=0):
-    for ref in ref_images:
-      x = compare_images(os.path.join(ref_images_path, ref), os.path.join(images_test_path, image))
-      if x < thres:
+  for pos in tqdm(images_pos, position=0):
+    for ref in images_ref:
+      x = compare_images(os.path.join(ref_images_dir_path, ref), os.path.join(positive_images_dir_path, pos))
+      if x < threshold:
         S_pos += 1
         break
   S_neg = 0
-  for image in tqdm(images_neg, position=0):
-    for ref in ref_images:
+  for neg in tqdm(images_neg, position=0):
+    for ref in images_ref:
       k = 1
-      x = compare_images(os.path.join(ref_images_path, ref), os.path.join(images_neg_path, image))
-      if x < thres:
+      x = compare_images(os.path.join(ref_images_dir_path, ref), os.path.join(negative_images_dir_path, neg))
+      if x < threshold:
         k = 0
         break
     S_neg += k
-  perf_pos = S_pos/len(images_test)
+  perf_pos = S_pos/len(images_pos)
   perf_neg = S_neg/len(images_neg)
   return perf_pos, perf_neg
  
