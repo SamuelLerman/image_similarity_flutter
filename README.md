@@ -111,9 +111,9 @@ the extension `.host("0.0.0.0)` allows other devices connected to the same wifi 
 
 - The function 
 ```dart
-generate_accuracies(String positive_images_dir_path, String negative_images_dir_path, String ref_images_dir_path TensorflowModel model)
+generate_accuracies(String positive_images_dir_path, String negative_images_dir_path, String ref_images_dir_path, num threshold, TensorflowModel model)
 ```
-generates, for a range of thresholds to define in the function, the accuracies for positive image recognition and negative image recognition.
+generates the accuracies for positive image recognition and negative image recognition for a certain threshold.
 - The function 
 ```dart
 plot_accuracies(String positive_images_dir_path, String negative_images_dir_path, String ref_images_dir_path TensorflowModel model)
