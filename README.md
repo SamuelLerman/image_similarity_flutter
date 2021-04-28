@@ -22,7 +22,7 @@ This respository is composed of three sections :
 
 ## The API
 
-I used python and flask to create the API. It is located at this [folder](). 
+I used python and flask to create the API. It is located in this [folder](). 
 
 ### Setup
 
