@@ -150,6 +150,8 @@ Then update your `pubspec.yaml` file as so:
   - ...
 ```
 
+NB: The `Info.plist` and `AndroidManifest.xml` files are already configured to allow access to the photo gallery and the camera.
+
 ### Configure the server address
 
 Once you have imported all your images. You will need to configure the `upload` method located in the `runModel.dart` file. If you are running the api on a local server, you should have the line:
