@@ -12,7 +12,7 @@ As an example, let's say that we have three reference images of the Joconde shot
 
 The implementation of the deep-ranking image similarity model is based on this [repository](https://github.com/akarshzingade/image-similarity-deep-ranking). The weights can be found in this [repository](https://github.com/USCDataScience/Image-Similarity-Deep-Ranking) (the "deepranking.h5" file).
 
-I used flutter framework on channel stable 2.0.5 and Xcode 12.4. As the deep-ranking model is quite complex, I didn't use the tflite flutter package to run ML models but created an API with python and flask which is accessed via the application.
+I used flutter framework on channel stable 2.0.5 and Xcode 12.4. As the deep-ranking model is quite complex, I didn't use the tflite flutter package to run ML models but created an API with python and flask which can be accessed via the application.
 
 This respository is composed of three sections :
 - The API directory which contains the files to launch the API on a server;
@@ -66,7 +66,7 @@ python_backend/
 ```
 
 #### Last step
-Type in the terminal window. the following command to lauchn the Flask server at the address http://localhost:5000 on your machine:
+Type in the terminal window. the following command to launch the Flask server at the address http://localhost:5000 on your machine:
 ```console
 $ python api.py
 ```
@@ -100,6 +100,12 @@ The `upload_image` method parse the arguments given in the request, call the `ar
 {"result": bool}
 ```
 
+In the last line:
+```python
+app.run(host: "0.0.0.0")
+```
+the extension `.host("0.0.0.0)` allows other devices connected to the same wifi to connect to the server.
+
 
 ## Ploting the accuracy of the model
 
@@ -112,12 +118,13 @@ generates, for a range of thresholds to define in the function, the accuracies f
 ```dart
 plot_accuracies(String positive_images_dir_path, String negative_images_dir_path, String ref_images_dir_path TensorflowModel model)
 ```
-then plots the results.
+plots the results as a function of the threshold.
 
 
 ## Flutter app
 
 ### Setup
+
 First you have to import your images into the images directory located in the assets folder which is at the root of the project. The structure of assets should be as follows:
 ```
 assets/
@@ -142,5 +149,18 @@ Then update your `pubspec.yaml` file as so:
   - images/ref_images_2/
   - ...
 ```
+
+### Configure the server address
+
+Once you have imported all your images. You will need to configure the `upload` method located in the `runModel.dart` file. If you are running the api on a local server, you should have the line:
+```dart
+var uri = Uri.parse("http://YOUR_IP_ADDRESS_ON_THE_NETWORK:5000/?class=${widget.testImageName}&thres=${thres}");
+```
+Notice that the class argument is widget.testImageName. Therefore, your reference images directory relative to this class must have the same name.
+
+
+
+## You are all set !
+
 
 
