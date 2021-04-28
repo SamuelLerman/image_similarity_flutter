@@ -24,7 +24,7 @@ I used python and flask to create the API. It is located at this [folder]().
 ### Setup
 
 #### First step
-Create a virtual environment in the ```python_backend``` directory and activate it. In terminal type the following commands:
+Create a virtual environment in the `python_backend` directory and activate it. In terminal type the following commands:
 ```
 cd python_bakcend
 virtualenv env
@@ -33,8 +33,8 @@ source env/bin/activate
 
 #### Second step
 Install all the dependencies by typing in terminal:
-```
-pip install -r requirements.txt
+```bash
+$ pip install -r requirements.txt
 ```
 
 #### Third step
@@ -73,14 +73,14 @@ In order to access the server from a different device connected to the same wifi
 ### deepranking_model.py
 
 The file ```deeprabking_model.py``` contains the functions that define the deep-ranking model (see the [repository]() mentionned above) and two other functions :
-- ```float compare_images(String img1_path, String im2_path, Model model)```
-- ```boolean are_images_similar(String image_path, String ref_images_directory_path, Model model, float threshold)```
+- ```c float compare_images(String img1_path, String im2_path, Model model)```
+- ```c boolean are_images_similar(String image_path, String ref_images_directory_path, Model model, float threshold)```
 
-The function ```compare_images``` returns the distance between two images. 
+The function ```c compare_images``` returns the distance between two images. 
 
 In order to assert that they are similar or not, we have to define a threshold. The threshold needs to be set in regard of the use of the app (either recognizing positive images very well or recognizing negative images very well). In order to determine the threshold that corresponds to your use, you can plot the accuracy of the model with the ```plot_accuracy_model.py``` file.
 
-The function ```are_images_similar``` iterates over the reference images of the class we selected and if it finds out that one of the distances between the image. to compare and the reference images is below the threshold, it returns True (the images are similar), else it returns False.
+The function ```c are_images_similar``` iterates over the reference images of the class we selected and if it finds out that one of the distances between the image. to compare and the reference images is below the threshold, it returns True (the images are similar), else it returns False.
 
 ### api.py
 
