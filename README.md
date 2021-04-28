@@ -87,7 +87,7 @@ The function ```compare_images``` returns the distance between two images.
 
 In order to assert that they are similar or not, we have to define a threshold. The threshold needs to be set in regard of the use of the app (either recognizing positive images very well or recognizing negative images very well). In order to determine the threshold that corresponds to your use, you can plot the accuracy of the model with the `plot_accuracy_model.py` file.
 
-The function ``` are_images_similar``` iterates over the reference images of the class we selected and if it finds out that one of the distances between the image. to compare and the reference images is below the threshold, it returns True (the images are similar), else it returns False.
+The function ```are_images_similar``` iterates over the reference images of the class we selected and if it finds out that one of the distances between the image. to compare and the reference images is below the threshold, it returns True (the images are similar), else it returns False.
 
 ### api.py
 
@@ -150,11 +150,11 @@ Then update your `pubspec.yaml` file as so:
   - ...
 ```
 
-NB: The `Info.plist` and `AndroidManifest.xml` files are already configured to allow access to the photo gallery and the camera.
+NB: The `Info.plist`, `AndroidManifest.xml` and `android/app/build.gradle` files have already been configured to allow access to the photo gallery and the camera.
 
 ### Configure the server address
 
-Once you have imported all your images. You will need to configure the `upload` method located in the `runModel.dart` file. If you are running the api on a local server, you should have the line:
+Once you have imported all your images. You will need to configure the `upload` method located in the `runModelScreen.dart` file. If you are running the api on a local server, you should have the line:
 ```dart
 var uri = Uri.parse("http://YOUR_IP_ADDRESS_ON_THE_NETWORK:5000/?class=${widget.testImageName}&thres=${thres}");
 ```
