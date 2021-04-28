@@ -64,7 +64,7 @@ def plot_accuracies(thresholds, performances_pos, performances_neg, ref_images_f
     
 ### If you want to load the model, import the deepranking_model.py in python_backend dir or create another file ###  
     
-def accuracy(ref_images_path, images_test_path, images_neg_path, thres, model):
+def generate_accuracies(ref_images_path, images_pos_path, images_neg_path, thres, model):
   """
   Computes the accuracy of the model over positive images and negative images
   You must pass:
