@@ -1,4 +1,4 @@
-# image_similarity_flutter
+# Asserting similarity between images - flutter app
 
 This project is the implementation of a deep-ranking based image similarity model into a flutter app prototype. 
 
