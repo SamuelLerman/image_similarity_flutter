@@ -164,5 +164,10 @@ Notice that the class argument is widget.testImageName. Therefore, your referenc
 
 ## You are all set !
 
+Here is a preview of the app:
+
+https://user-images.githubusercontent.com/70236982/116528049-a38a8300-a8db-11eb-942a-9516ab1c3dc8.mp4
+
+
 
 
